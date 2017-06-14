@@ -1,4 +1,6 @@
-A sample recipe search.
+Search Engine in making
+For DOER: Distributed Open Educational Resources
+
 
 ## Installing
 
@@ -9,7 +11,7 @@ After you get it, just run
 
 in the root directory.
 
-You'll also need elasticsearch loaded up with recipes and accepting connections on
+You'll also need elasticsearch loaded up and accepting connections on
 localhost:9200 for this example.
 
 When all those ducks are in a row, just open index.html in a browser.
