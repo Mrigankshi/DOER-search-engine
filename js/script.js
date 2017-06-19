@@ -18,16 +18,25 @@ MyOpennutch.factory('docservice',
         });
 
         /**
-         * Given a term and an offset, load another round of 10 nutch.
+         * Given a term and an offset, load another round of 10 results.
          *
          * Returns a promise.
          */
         var search = function(term, offset){
             var deferred = $q.defer();
-            var query = {
-                "match": {
-                    "_all": term
-                }
+            var query =  {
+           "bool": {
+                 "should": {
+                        "match": {
+                                 "title": term
+                                 }
+                            },
+                 "must":  {
+                         "match": {
+                                "_all": term
+                                 }
+                           }
+                    }
             };
 
             client.search({
