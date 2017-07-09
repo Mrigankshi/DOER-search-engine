@@ -39,6 +39,7 @@ MyOpennutch.factory('docservice',
                     }
             };
 
+
             client.search({
                 "index": 'nutch',
                 "type": 'doc',

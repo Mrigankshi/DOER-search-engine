@@ -37,7 +37,8 @@ h1{
   color: black;
 }
 */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700); 
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -88,7 +89,7 @@ a {
     border-bottom: 1px solid
 }
 a:visited {
-    color: #0044ff
+    color: #9f38e2
 }
 .container {
     width: 928px
