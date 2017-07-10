@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>http.agent.name</name>
+    <value>mycrawlername</value> <!-- this can be changed to something more sane if you like -->
+  </property>
+  <property>
+    <name>http.robots.agents</name>
+    <value>mycrawlername</value> <!-- this is the robot name we're looking for in robots.txt files -->
+  </property>
+  <property>
+    <name>storage.data.store.class</name>
+    <value>org.apache.gora.hbase.store.HBaseStore</value>
+  </property>
+  <property>
+    <name>plugin.includes</name>
+    <!-- do **NOT** enable the parse-html plugin, if you want proper HTML parsing. Use something like parse-tika! -->
+    <value>protocol-httpclient|urlfilter-regex|parse-(text|tika|js)|index-(basic|anchor)|query-(basic|site|url)|response-(json|xml)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|indexer-elastic</value>
+  </property>
+  <property>
+    <name>db.ignore.external.links</name>
+    <value>true</value> <!-- do not leave the seeded domains (optional) -->
+  </property>
+  <property>
+    <name>elastic.host</name>
+    <value>localhost</value> <!-- where is ElasticSearch listening -->
+  </property>
+  <property> 
+    <name>fetcher.threads.fetch</name> 
+    <value>20</value> 
+    <description>The number of FetcherThreads the fetcher should use. 
+  This is also determines the maximum number of requests that are 
+  made at once (each FetcherThread handles one connection). The total 
+  number of threads running in distributed mode will be the number of 
+  fetcher threads * number of nodes as fetcher has one map task per node. 
+    </description> 
+  </property> 
+  <property>
+    <name>http.content.limit</name>
+    <value>-1</value>
+    <description>The length limit for downloaded content using the http
+    protocol, in bytes. If this value is nonnegative (>=0), content longer
+    than it will be truncated; otherwise, no truncation at all. Do not
+    confuse this setting with the file.content.limit setting.
+    </description>
+  </property>
+</configuration>
