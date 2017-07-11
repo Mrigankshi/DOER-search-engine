@@ -1,8 +1,10 @@
-#INFO
+INFO
+----
 
 Complete setup for Doer Search Engine.
 
-#HOW TO SETUP
+HOW TO SETUP
+----
 
 1. The files for the search engine are in the directory 'doer-search-engine' along with a separate setup documentation.
 

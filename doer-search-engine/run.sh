@@ -27,17 +27,15 @@ while /bin/true; do
 SERVICE2=elasticsearch
 SERVICE1=hbase
   if ps ax | grep -v grep | grep $SERVICE1 > /dev/null ; then
-    
-	echo "Hbase running."
+    	:
   else
-	echo "Hbase exited."	
+	echo "Hbase exited. Start manually"	
   fi
 
   if ps ax | grep -v grep | grep $SERVICE2 > /dev/null ; then
-     
-	echo "Elasticsearch running."
+     	:
   else
-	echo "Elasticsearch exited"	
+	echo "Elasticsearch exited. Start manually"	
   fi
  
   sleep 10
