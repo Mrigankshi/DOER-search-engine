@@ -50,18 +50,20 @@ How to use this image
    runtime/local/bin/crawl seed crawlid elastic.server.url=http://localhost:9200/elastic/ depth
 
 	Where crawlid is any number and depth is the number of cycle
+
 	For whole domain to be crawled, use an unusually large number for depth
 
 Storage
 ----
 
-crawldb: /hbase-data
-elasticsearch index: /var/lib/elasticsearch
+* crawldb: /hbase-data
+
+* elasticsearch index: /var/lib/elasticsearch
+
+Copy these files outside the container, in case the container crashes. 
 
 
 
-
-export TERM=vt100
 
 
 
