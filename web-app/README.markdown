@@ -4,15 +4,8 @@ For DOER: Distributed Open Educational Resources
 
 ## Installing
 
-You'll need [bower](http://bower.io/) to install the javascript dependencies.
-After you get it, just run
-
-    bower install
-
-in the root directory.
-
 You'll also need elasticsearch loaded up and accepting connections on
-localhost:9200 for this example.
+localhost:9200 and this repo cloned on your machine.
 
 After these are in row,
 

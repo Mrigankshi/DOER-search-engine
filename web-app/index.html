@@ -27,12 +27,12 @@
           <div class='no-nutch' ng-hide='nutch.length'>No results</div>
           <article class='doc' ng-cloak ng-repeat='doc in nutch'>
             <h2>
-              <a ng-href='{{doc.url}}'>{{doc.title}}</a>
+              <a ng-href='{{doc.url}}' target="_blank">{{doc.title}}</a>
             </h2>
            
             <p>
               {{doc.content | limitTo : 250}}
-              <a ng-href='{{doc.url}}'>... more at {{doc.source}}</a>
+              <a ng-href='{{doc.url}}' target="_blank">... more at {{doc.source}}</a>
             </p>
           </article>
           <div class='load-more' ng-cloak ng-hide='allResults'>
