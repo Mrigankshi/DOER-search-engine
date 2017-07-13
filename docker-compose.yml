@@ -1,0 +1,61 @@
+# DOER SEARCH ENGINE 
+# USING NUTCH and ELASTIC SEARCH
+
+version: "2"
+
+services:
+  
+# Create DOER search engine container
+  doer-search-engine:
+    build:
+      context: ./doer-search-engine/
+      dockerfile: Dockerfile
+    image: doer-search-engine:latest
+    expose: ["9200"]
+    container_name: 'doer-search-engine'
+    restart: always
+    hostname: doer-search-engine
+#    domainname: abcde.metastudio.org # Change to the hostname you will use
+    environment:
+      - VIRTUAL_HOST=doer-search-engine
+      - VIRTUAL_PROTO=https
+      - LETSENCRYPT_HOST=doer-search-engine
+      - LETSENCRYPT_EMAIL=nagarjun@gnowledge.org
+    ports:
+      - "9200:9200"             #elasticsearch
+      
+    volumes:
+      # requires proper authorizations, see rights.sh (incase of 403-forbidden error on web browser, please check /data/media permissions)
+      - /home/ustad/Documents/doer-search-engine/DOER-search-engine/data/elasticsearch:/var/lib/elasticsearch
+      - /home/ustad/Documents/doer-search-engine/DOER-search-engine/data/hbase-data:/hbase-data
+  
+  doer-webapp:
+    build:
+      context: ./web-app/
+      dockerfile: Dockerfile  
+    image: doer-search-webapp:latest
+    expose:
+      - "80"
+      - "8080"
+      - "443" 
+    container_name: 'doer-search-webapp'
+    restart: always
+    hostname: doer-search-webapp
+    domainname: search.metastudio.org # Change to the hostname you will use                                                                                                 
+    environment:
+      - VIRTUAL_HOST=doer-search-webapp
+      - VIRTUAL_PROTO=https
+      - LETSENCRYPT_HOST=search.metastudio.org
+      - LETSENCRYPT_EMAIL=nagarjun@gnowledge.org
+    ports:                                                                                                                                                                  
+      - "4080:80"               #http                                                                                                                                       
+      - "4443:443"              #https                                                                                                                                      
+      - "4022:22"               #ssh                                                                                                                                        
+      - "4025:25"               #smtp                                                                                                                                       
+      - "4143:143"              #g-imap                                                                                                                                     
+      - "4587:587"              #g-smtp
+      - "4808:8080"
+networks:
+  default:
+    external:
+      name: gnode1-bridge-network
